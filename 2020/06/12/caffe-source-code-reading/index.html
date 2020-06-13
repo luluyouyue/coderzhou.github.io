@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="contact, ECNU NLP DeepLearning AntNLP 韦阳 godweiyang WeiYang 自然语言处理 深度学习 算法码上来">
+    <meta name="keywords" content="caffe源码阅读之源码安装caffe（一）, ECNU NLP DeepLearning AntNLP 韦阳 godweiyang WeiYang 自然语言处理 深度学习 算法码上来">
     <meta name="description" content="深度学习 | 机器学习 | 自然语言处理">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>contact | 代码人老周</title>
+    <title>caffe源码阅读之源码安装caffe（一） | 代码人老周</title>
     <link rel="icon" type="image/png" href="/favicon.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
@@ -308,12 +308,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/16.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/20.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">contact</h1>
+                    <h1 class="description center-align post-title">caffe源码阅读之源码安装caffe（一）</h1>
                 </div>
             </div>
         </div>
@@ -428,12 +428,25 @@
             <div class="row tag-cate">
                 <div class="col s7">
                     
-                          <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
-                          </div>
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/">
+                                <span class="chip bg-color">深度学习框架</span>
+                            </a>
+                        
+                    </div>
                     
                 </div>
                 <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                深度学习
+                            </a>
+                        
+                    </div>
                     
                 </div>
             </div>
@@ -442,21 +455,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>Publish Date:&nbsp;&nbsp;
-                    2020-06-10
+                    2020-06-12
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-06-10
+                    2020-06-12
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    0
+                    280
                 </div>
                 
 
@@ -478,7 +491,20 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                
+                <p>作为一个tf boy，日常面对的就是各种深度学习框架，为了弄清楚它们运行的原理，本文从caffe这种比较简单的深度学习框架开始探究<br>它们的运行原理。最终学习pytorch的运行的原理。</p>
+<h2 id="caffe的linux安装"><a href="#caffe的linux安装" class="headerlink" title="caffe的linux安装"></a>caffe的linux安装</h2><p>由于windows上的安装比较麻烦，为了简化学习的成本，我选择在linux上安装caffe。我用的是Debian系统，按照参考文献[1]的步骤来，可以安装成功。</p>
+<p>我主要补充下面几点</p>
+<h1 id="1、安装cmake"><a href="#1、安装cmake" class="headerlink" title="1、安装cmake"></a>1、安装cmake</h1><p>如果没有安装cmake，需要先安装一下cmake，命令如下：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install cmake</span><br></pre></td></tr></table></figure>
+
+<h1 id="2、make命令的含义"><a href="#2、make命令的含义" class="headerlink" title="2、make命令的含义"></a>2、make命令的含义</h1><p>构建、编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">make all  # 编译所有目标文件</span><br><span class="line">make test # 编译test文件</span><br><span class="line">make runtest # 编译runtest文件</span><br></pre></td></tr></table></figure>
+
+<h1 id="3、关于gfortran"><a href="#3、关于gfortran" class="headerlink" title="3、关于gfortran"></a>3、关于gfortran</h1><p>gfortran是GCC中的GNU Fortran编译器。从GCC4.0版开始，gfortran取代了g77成为GCC中的fortran编译器。</p>
+<p>gfortran目前仍在开发中，gfortran支持fortran77 90 95语法，部分支持fortran200X语法。</p>
+<h1 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h1><p><img src="/medias/deeplearning/caffe1.png" alt=""></p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="https://blog.csdn.net/pangyunsheng/article/details/79418896?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">https://blog.csdn.net/pangyunsheng/article/details/79418896?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase</a></p>
+
             </div>
             <hr/>
 
@@ -503,7 +529,7 @@
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="http://yoursite.com/contact/index.html">http://yoursite.com/contact/index.html</a>
+                    <a href="http://yoursite.com/2020/06/12/caffe-source-code-reading/">http://yoursite.com/2020/06/12/caffe-source-code-reading/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -540,7 +566,11 @@
                 <div class="post-meta__tag-list" style="display: inline-block;">
                     
                         <div class="article-tag">
-                            <span class="chip bg-color">No tag</span>
+                            
+                                <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/">
+                                    <span class="chip bg-color">深度学习框架</span>
+                                </a>
+                            
                         </div>
                     
                 </div>
@@ -711,34 +741,47 @@
                 <i class="far fa-dot-circle"></i>&nbsp;Current
             </div>
             <div class="card">
-                <a href="/contact/index.html">
+                <a href="/2020/06/12/caffe-source-code-reading/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="contact">
+                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="caffe源码阅读之源码安装caffe（一）">
                         
-                        <span class="card-title">contact</span>
+                        <span class="card-title">caffe源码阅读之源码安装caffe（一）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            作为一个tf boy，日常面对的就是各种深度学习框架，为了弄清楚它们运行的原理，本文从caffe这种比较简单的深度学习框架开始探究它们的运行原理。最终学习pytorch的运行的原理。
+caffe的linux安装由于windows上的安装比较
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-10
+                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-12
                             </span>
                         <span class="publish-author">
                             
-                            <i class="fas fa-user fa-fw"></i>
-                            老周
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" class="post-category">
+                                    深度学习
+                                </a>
+                            
                             
                         </span>
                     </div>
                 </div>
 
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0%E6%A1%86%E6%9E%B6/">
+                        <span class="chip bg-color">深度学习框架</span>
+                    </a>
+                    
+                </div>
                 
             </div>
         </div>
@@ -746,22 +789,23 @@
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                Current&nbsp;<i class="far fa-dot-circle"></i>
+                Next&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/contact/index.html">
+                <a href="/2020/06/10/bert/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="contact">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="bert">
                         
-                        <span class="card-title">contact</span>
+                        <span class="card-title">bert</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            
+                            测试博客效果
+
                         
                     </div>
                     <div class="publish-info">
@@ -776,7 +820,6 @@
                         </span>
                     </div>
                 </div>
-
                 
             </div>
         </div>
