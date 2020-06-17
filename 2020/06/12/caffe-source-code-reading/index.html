@@ -462,21 +462,21 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>Update Date:&nbsp;&nbsp;
-                    2020-06-12
+                    2020-06-14
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    280
+                    1.1k
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>Read Times:&nbsp;&nbsp;
-                    1 Min
+                    5 Min
                 </div>
                 
 
@@ -491,19 +491,31 @@
         <hr class="clearfix">
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <p>作为一个tf boy，日常面对的就是各种深度学习框架，为了弄清楚它们运行的原理，本文从caffe这种比较简单的深度学习框架开始探究<br>它们的运行原理。最终学习pytorch的运行的原理。</p>
-<h2 id="caffe的linux安装"><a href="#caffe的linux安装" class="headerlink" title="caffe的linux安装"></a>caffe的linux安装</h2><p>由于windows上的安装比较麻烦，为了简化学习的成本，我选择在linux上安装caffe。我用的是Debian系统，按照参考文献[1]的步骤来，可以安装成功。</p>
+                <p>作为一个tf boy，日常面对的就是各种深度学习框架，为了弄清楚它们运行的原理，本文从caffe这种比较简单的深度学习框架开始探究它们的运行原理。最终学习pytorch的运行的原理。</p>
+<h1 id="caffe的linux安装"><a href="#caffe的linux安装" class="headerlink" title="caffe的linux安装"></a>caffe的linux安装</h1><p>由于windows上的安装比较麻烦，为了简化学习的成本，我选择在linux上安装caffe。我用的是Debian系统，按照参考文献[1]的步骤来，可以安装成功。</p>
 <p>我主要补充下面几点</p>
-<h1 id="1、安装cmake"><a href="#1、安装cmake" class="headerlink" title="1、安装cmake"></a>1、安装cmake</h1><p>如果没有安装cmake，需要先安装一下cmake，命令如下：</p>
+<h1 id="安装过程的一些解释"><a href="#安装过程的一些解释" class="headerlink" title="安装过程的一些解释"></a>安装过程的一些解释</h1><p>如果没有安装cmake，需要先安装一下cmake，命令如下：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install cmake</span><br></pre></td></tr></table></figure>
 
-<h1 id="2、make命令的含义"><a href="#2、make命令的含义" class="headerlink" title="2、make命令的含义"></a>2、make命令的含义</h1><p>构建、编译</p>
+<p>make命令的含义：<br>构建、编译</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">make all  # 编译所有目标文件</span><br><span class="line">make test # 编译test文件</span><br><span class="line">make runtest # 编译runtest文件</span><br></pre></td></tr></table></figure>
 
-<h1 id="3、关于gfortran"><a href="#3、关于gfortran" class="headerlink" title="3、关于gfortran"></a>3、关于gfortran</h1><p>gfortran是GCC中的GNU Fortran编译器。从GCC4.0版开始，gfortran取代了g77成为GCC中的fortran编译器。</p>
+<p>关于gfortran：<br>gfortran是GCC中的GNU Fortran编译器。从GCC4.0版开始，gfortran取代了g77成为GCC中的fortran编译器。</p>
 <p>gfortran目前仍在开发中，gfortran支持fortran77 90 95语法，部分支持fortran200X语法。</p>
-<h1 id="4、"><a href="#4、" class="headerlink" title="4、"></a>4、</h1><p><img src="/medias/deeplearning/caffe1.png" alt=""></p>
-<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="https://blog.csdn.net/pangyunsheng/article/details/79418896?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">https://blog.csdn.net/pangyunsheng/article/details/79418896?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase</a></p>
+<p>virtual memory exhausted: Cannot allocate memory错误的处理：<br><img src="/medias/deeplearning/caffe1.png" alt=""></p>
+<p>这是由于我是用的云上虚拟机，没有配置虚拟内存。参考[2]配置下虚拟内存就好了，里面的free命令是linux的一个资源监控工具，主要监控内存、物理存储的。</p>
+<p>更多虚拟内存的知识，可以看看[3]，这篇博客讲解的比较详细。</p>
+<p>free命令：<br><a href="https://www.cnblogs.com/peida/archive/2012/12/25/2831814.html" target="_blank" rel="noopener">https://www.cnblogs.com/peida/archive/2012/12/25/2831814.html</a></p>
+<h1 id="caffe运行minist手写识别的例子、"><a href="#caffe运行minist手写识别的例子、" class="headerlink" title="caffe运行minist手写识别的例子、"></a>caffe运行minist手写识别的例子、</h1><p>源码安装caffe后，为了一探它运行的原理，我们首先看一下caffe是如何跑通一个深度学习程序的。在源码examples/mnist文件下有手写识别的例子。<br>根据相关介绍。caffe运行一个程序需要配置两个prototxt文件，一个是定义网络的，一个是定义超参数，比如学习器、迭代次数这些参数。比如用lenet跑手写识别，<br>首先可以定义一个lenet.prototxt，这个文件定义了网络长啥样，内容如下：</p>
+<h1 id="定义网络结构"><a href="#定义网络结构" class="headerlink" title="定义网络结构"></a>定义网络结构</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br></pre></td><td class="code"><pre><span class="line">name: &quot;LeNet&quot;</span><br><span class="line">layer &#123;</span><br><span class="line">  name: &quot;data&quot;</span><br><span class="line">  type: &quot;Input&quot;</span><br><span class="line">  top: &quot;data&quot;</span><br><span class="line">  input_param &#123; shape: &#123; dim: 64 dim: 1 dim: 28 dim: 28 &#125; &#125;</span><br><span class="line">&#125;</span><br><span class="line">layer &#123;</span><br><span class="line">  name: &quot;conv1&quot;</span><br><span class="line">  type: &quot;Convolution&quot;</span><br><span class="line">  bottom: &quot;data&quot;</span><br><span class="line">  top: &quot;conv1&quot;</span><br><span class="line">  param &#123;</span><br><span class="line">    lr_mult: 1</span><br><span class="line">  &#125;</span><br><span class="line">  param &#123;</span><br><span class="line">    lr_mult: 2</span><br><span class="line">  &#125;</span><br><span class="line">  convolution_param &#123;</span><br><span class="line">    num_output: 20</span><br><span class="line">    kernel_size: 5</span><br><span class="line">    stride: 1</span><br><span class="line">    weight_filler &#123;</span><br><span class="line">      type: &quot;xavier&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    bias_filler &#123;</span><br><span class="line">      type: &quot;constant&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">layer &#123;</span><br><span class="line">  name: &quot;pool1&quot;</span><br><span class="line">  type: &quot;Pooling&quot;</span><br><span class="line">  bottom: &quot;conv1&quot;</span><br><span class="line">  top: &quot;pool1&quot;</span><br><span class="line">  pooling_param &#123;</span><br><span class="line">    pool: MAX</span><br><span class="line">    kernel_size: 2</span><br><span class="line">    stride: 2</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">layer &#123;</span><br><span class="line">  name: &quot;conv2&quot;</span><br><span class="line">  type: &quot;Convolution&quot;</span><br><span class="line">  bottom: &quot;pool1&quot;</span><br><span class="line">  top: &quot;conv2&quot;</span><br><span class="line">  param &#123;</span><br><span class="line">    lr_mult: 1</span><br><span class="line">  &#125;</span><br><span class="line">  param &#123;</span><br><span class="line">    lr_mult: 2</span><br><span class="line">  &#125;</span><br><span class="line">  convolution_param &#123;</span><br><span class="line">    num_output: 50</span><br><span class="line">    kernel_size: 5</span><br><span class="line">    stride: 1</span><br><span class="line">    weight_filler &#123;</span><br><span class="line">      type: &quot;xavier&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    bias_filler &#123;</span><br><span class="line">      type: &quot;constant&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">layer &#123;</span><br><span class="line">  name: &quot;pool2&quot;</span><br><span class="line">  type: &quot;Pooling&quot;</span><br><span class="line">  bottom: &quot;conv2&quot;</span><br><span class="line">  top: &quot;pool2&quot;</span><br><span class="line">  pooling_param &#123;</span><br><span class="line">    pool: MAX</span><br><span class="line">    kernel_size: 2</span><br><span class="line">    stride: 2</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">layer &#123;</span><br><span class="line">  name: &quot;ip1&quot;</span><br><span class="line">  type: &quot;InnerProduct&quot;</span><br><span class="line">  bottom: &quot;pool2&quot;</span><br><span class="line">  top: &quot;ip1&quot;</span><br><span class="line">  param &#123;</span><br><span class="line">    lr_mult: 1</span><br><span class="line">  &#125;</span><br><span class="line">  param &#123;</span><br><span class="line">    lr_mult: 2</span><br><span class="line">  &#125;</span><br><span class="line">  inner_product_param &#123;</span><br><span class="line">    num_output: 500</span><br><span class="line">    weight_filler &#123;</span><br><span class="line">      type: &quot;xavier&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    bias_filler &#123;</span><br><span class="line">      type: &quot;constant&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">layer &#123;</span><br><span class="line">  name: &quot;relu1&quot;</span><br><span class="line">  type: &quot;ReLU&quot;</span><br><span class="line">  bottom: &quot;ip1&quot;</span><br><span class="line">  top: &quot;ip1&quot;</span><br><span class="line">&#125;</span><br><span class="line">layer &#123;</span><br><span class="line">  name: &quot;ip2&quot;</span><br><span class="line">  type: &quot;InnerProduct&quot;</span><br><span class="line">  bottom: &quot;ip1&quot;</span><br><span class="line">  top: &quot;ip2&quot;</span><br><span class="line">  param &#123;</span><br><span class="line">    lr_mult: 1</span><br><span class="line">  &#125;</span><br><span class="line">  param &#123;</span><br><span class="line">    lr_mult: 2</span><br><span class="line">  &#125;</span><br><span class="line">  inner_product_param &#123;</span><br><span class="line">    num_output: 10</span><br><span class="line">    weight_filler &#123;</span><br><span class="line">      type: &quot;xavier&quot;</span><br><span class="line">    &#125;</span><br><span class="line">    bias_filler &#123;</span><br><span class="line">      type: &quot;constant&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">layer &#123;</span><br><span class="line">  name: &quot;prob&quot;</span><br><span class="line">  type: &quot;Softmax&quot;</span><br><span class="line">  bottom: &quot;ip2&quot;</span><br><span class="line">  top: &quot;prob&quot;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h1 id="定义网络参数"><a href="#定义网络参数" class="headerlink" title="定义网络参数"></a>定义网络参数</h1><p>定义完网络后，网路的训练还需要一些配置，取名lenet_solver.prototxt，内容如下</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"># The train&#x2F;test net protocol buffer definition</span><br><span class="line">net: &quot;examples&#x2F;mnist&#x2F;lenet.prototxt&quot;</span><br><span class="line"># test_iter specifies how many forward passes the test should carry out.</span><br><span class="line"># In the case of MNIST, we have test batch size 100 and 100 test iterations,</span><br><span class="line"># covering the full 10,000 testing images.</span><br><span class="line">test_iter: 100</span><br><span class="line"># Carry out testing every 500 training iterations.</span><br><span class="line">test_interval: 500</span><br><span class="line"># The base learning rate, momentum and the weight decay of the network.</span><br><span class="line">base_lr: 0.01</span><br><span class="line">momentum: 0.9</span><br><span class="line">weight_decay: 0.0005</span><br><span class="line"># The learning rate policy</span><br><span class="line">lr_policy: &quot;inv&quot;</span><br><span class="line">gamma: 0.0001</span><br><span class="line">power: 0.75</span><br><span class="line"># Display every 100 iterations</span><br><span class="line">display: 100</span><br><span class="line"># The maximum number of iterations</span><br><span class="line">max_iter: 10000</span><br><span class="line"># snapshot intermediate results</span><br><span class="line">snapshot: 5000</span><br><span class="line">snapshot_prefix: &quot;examples&#x2F;mnist&#x2F;lenet&quot;</span><br><span class="line"># solver mode: CPU or GPU</span><br><span class="line">solver_mode: GPU</span><br></pre></td></tr></table></figure>
+
+<h1 id="运行"><a href="#运行" class="headerlink" title="运行"></a>运行</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">.&#x2F;build&#x2F;tools&#x2F;caffe train --solver&#x3D;examples&#x2F;mnist&#x2F;lenet_solver.prototxt</span><br></pre></td></tr></table></figure>
+
+<p>总结：本节讲了caffe的源码安装以及caffe的程序实例，下节讲述caffe是怎么跑起来这些程序的，也就是caffe的原理。</p>
+<h1 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h1><p>[1] <a href="https://blog.csdn.net/pangyunsheng/article/details/79418896?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase" target="_blank" rel="noopener">https://blog.csdn.net/pangyunsheng/article/details/79418896?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase&amp;depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-1.nonecase</a><br>[2] <a href="https://www.cnblogs.com/chenpingzhao/p/4820814.html" target="_blank" rel="noopener">https://www.cnblogs.com/chenpingzhao/p/4820814.html</a><br>[3] <a href="https://juejin.im/post/5c7fb7e9f265da2dcf62ad43" target="_blank" rel="noopener">https://juejin.im/post/5c7fb7e9f265da2dcf62ad43</a></p>
 
             </div>
             <hr/>
@@ -736,31 +748,30 @@
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="far fa-dot-circle"></i>&nbsp;Current
-            </div>
+                <i class="fas fa-chevron-left"></i>&nbsp;Previous</div>
             <div class="card">
-                <a href="/2020/06/12/caffe-source-code-reading/">
+                <a href="/2020/06/15/caffe-source-code-reading2/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="caffe源码阅读之源码安装caffe（一）">
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="caffe源码阅读之caffe（二）">
                         
-                        <span class="card-title">caffe源码阅读之源码安装caffe（一）</span>
+                        <span class="card-title">caffe源码阅读之caffe（二）</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            作为一个tf boy，日常面对的就是各种深度学习框架，为了弄清楚它们运行的原理，本文从caffe这种比较简单的深度学习框架开始探究它们的运行原理。最终学习pytorch的运行的原理。
-caffe的linux安装由于windows上的安装比较
+                            caffe的模块layer、net、blob
+
                         
                     </div>
                     <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2020-06-12
-                            </span>
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2020-06-15
+                        </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -773,7 +784,6 @@ caffe的linux安装由于windows上的安装比较
                         </span>
                     </div>
                 </div>
-
                 
                 <div class="card-action article-tags">
                     
@@ -1034,7 +1044,7 @@ conf: 'prod_b10e007187ec74714f5b4caedf4b8211'
             <br>
             
             &nbsp;<i class="fas fa-chart-area"></i>&nbsp;站点总字数:&nbsp;<span
-                class="white-color">359</span>&nbsp;字
+                class="white-color">1.2k</span>&nbsp;字
             
             
             
