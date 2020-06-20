@@ -456,7 +456,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>Word Count:&nbsp;&nbsp;
-                    162
+                    224
                 </div>
                 
 
@@ -481,9 +481,13 @@
                 <p>记录利用hexo搭建博客时候的一些关键步骤，网上有很多类似的博客。我主要介绍我遇到的一些问题</p>
 <h2 id="如何在博客中插入图片？"><a href="#如何在博客中插入图片？" class="headerlink" title="如何在博客中插入图片？"></a>如何在博客中插入图片？</h2><p>我博客的根目录是blog，在blog的public\medias目录下放入自己的图片。比如我有一张1.jpg文件</p>
 <p>然后用![ ]( / medias / 1.jpg)使用它（去掉空格）</p>
+<h2 id="取消首页渐变颜色动画"><a href="#取消首页渐变颜色动画" class="headerlink" title="取消首页渐变颜色动画"></a>取消首页渐变颜色动画</h2><p>在themes\Matery\source\css\matery.css，ctrl+F快捷键查找.bg-cover:after，注释掉即可。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;* .bg-cover:after &#123;</span><br><span class="line">    -webkit-animation: rainbow 60s infinite;</span><br><span class="line">    animation: rainbow 60s infinite;</span><br><span class="line">&#125; *&#x2F;</span><br></pre></td></tr></table></figure>
+
 <h2 id="更改首页中个人信息"><a href="#更改首页中个人信息" class="headerlink" title="更改首页中个人信息"></a>更改首页中个人信息</h2><p>如下图，matery主题中的个人信息部分是作者的信息。</p>
 <p><img src="/medias/hexo-1.jpg?100x100" alt=""></p>
 <p>在blog\themes\hexo-theme-matery目录找到配置文件_config.yml，检索indexbtn和socialLink将其中的部分更改成个人信息就可以了。</p>
+<h2 id="参考文献"><a href="#参考文献" class="headerlink" title="参考文献"></a>参考文献</h2><p>[1] <a href="https://blog.csdn.net/cungudafa/article/details/106278206" target="_blank" rel="noopener">https://blog.csdn.net/cungudafa/article/details/106278206</a></p>
 
             </div>
             <hr/>
@@ -554,9 +558,6 @@
                     <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
 <div id="article-share">
 
-    
-    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
-    <script src="/libs/share/js/social-share.min.js"></script>
     
 
     
@@ -674,7 +675,7 @@
                         <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
                     </ul>
                     <div id="alipay">
-                        <img src="/medias/reward/alipay2.jpg" class="reward-img" alt="支付宝打赏二维码">
+                        <img src="/medias/reward/alipay2.png" class="reward-img" alt="支付宝打赏二维码">
                     </div>
                     <div id="wechat">
                         <img src="/medias/reward/wechatpay2.png" class="reward-img" alt="微信打赏二维码">
@@ -1001,10 +1002,10 @@ conf: 'prod_b10e007187ec74714f5b4caedf4b8211'
 <script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
 
     
-    <div class="container row center-align" style="margin-bottom: 0px !important;">
+    <div class="container row center-align" style="margin-bottom: 15px !important;">
         <div class="col s12 m8 l8 copy-right">
             Copyright&nbsp;&copy;
-            <span id="year">2019</span>
+            <span id="year">2020</span>
             <a href="/about" target="_blank">老周</a>
             |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">Hexo</a>
             |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
@@ -1030,6 +1031,50 @@ conf: 'prod_b10e007187ec74714f5b4caedf4b8211'
             </span>
             
             <br>
+            
+            <span id="sitetime">载入运行时间...</span>
+            <script>
+                function siteTime() {
+                    var seconds = 1000;
+                    var minutes = seconds * 60;
+                    var hours = minutes * 60;
+                    var days = hours * 24;
+                    var years = days * 365;
+                    var today = new Date();
+                    var startYear = "2020";
+                    var startMonth = "6";
+                    var startDate = "10";
+                    var startHour = "0";
+                    var startMinute = "0";
+                    var startSecond = "0";
+                    var todayYear = today.getFullYear();
+                    var todayMonth = today.getMonth() + 1;
+                    var todayDate = today.getDate();
+                    var todayHour = today.getHours();
+                    var todayMinute = today.getMinutes();
+                    var todaySecond = today.getSeconds();
+                    var t1 = Date.UTC(startYear, startMonth, startDate, startHour, startMinute, startSecond);
+                    var t2 = Date.UTC(todayYear, todayMonth, todayDate, todayHour, todayMinute, todaySecond);
+                    var diff = t2 - t1;
+                    var diffYears = Math.floor(diff / years);
+                    var diffDays = Math.floor((diff / days) - diffYears * 365);
+                    var diffHours = Math.floor((diff - (diffYears * 365 + diffDays) * days) / hours);
+                    var diffMinutes = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours) /
+                        minutes);
+                    var diffSeconds = Math.floor((diff - (diffYears * 365 + diffDays) * days - diffHours * hours -
+                        diffMinutes * minutes) / seconds);
+                    if (startYear == todayYear) {
+                        document.getElementById("year").innerHTML = todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffDays + " 天 " + diffHours +
+                            " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    } else {
+                        document.getElementById("year").innerHTML = startYear + " - " + todayYear;
+                        document.getElementById("sitetime").innerHTML = "本站已安全运行 " + diffYears + " 年 " + diffDays +
+                            " 天 " + diffHours + " 小时 " + diffMinutes + " 分钟 " + diffSeconds + " 秒";
+                    }
+                }
+                setInterval(siteTime, 1000);
+            </script>
             
             <br>
             
